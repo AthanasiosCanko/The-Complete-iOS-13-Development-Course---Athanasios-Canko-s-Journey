@@ -15,27 +15,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Image Swapper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ket-CD-kOd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image Swapper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ket-CD-kOd">
                                 <rect key="frame" x="20" y="44" width="374" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="UvA-e4-3Y2"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap the button below to toggle between the image of a cat or a dog." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Cf-cB-mYv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the button below to toggle between the image of a cat or a dog." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Cf-cB-mYv">
                                 <rect key="frame" x="20" y="102" width="374" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="VFx-sK-GQX"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cat" translatesAutoresizingMaskIntoConstraints="NO" id="C40-Ra-gNt">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cat" translatesAutoresizingMaskIntoConstraints="NO" id="C40-Ra-gNt">
                                 <rect key="frame" x="87" y="298" width="240" height="300"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="3h9-eP-PtR"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="He7-ON-dOW">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="He7-ON-dOW">
                                 <rect key="frame" x="142" y="606" width="130" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Kw9-Nz-Vfk"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Tap to change">
                                     <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -44,15 +52,34 @@
                                     <action selector="changeImageButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3fe-Sf-gmu"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Animal displayed: Cat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxg-kK-5Kk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animal displayed: Cat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxg-kK-5Kk">
                                 <rect key="frame" x="20" y="827" width="374" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="HXG-im-dp4"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="0Cf-cB-mYv" firstAttribute="leading" secondItem="rxg-kK-5Kk" secondAttribute="leading" id="8Ny-ue-dYW"/>
+                            <constraint firstItem="He7-ON-dOW" firstAttribute="centerX" secondItem="rxg-kK-5Kk" secondAttribute="centerX" id="Aik-fJ-iV0"/>
+                            <constraint firstItem="ket-CD-kOd" firstAttribute="leading" secondItem="0Cf-cB-mYv" secondAttribute="leading" id="Go8-rB-Qth"/>
+                            <constraint firstItem="C40-Ra-gNt" firstAttribute="centerX" secondItem="He7-ON-dOW" secondAttribute="centerX" id="KVz-24-hvI"/>
+                            <constraint firstItem="ket-CD-kOd" firstAttribute="trailing" secondItem="0Cf-cB-mYv" secondAttribute="trailing" id="NBh-uf-8h2"/>
+                            <constraint firstItem="rxg-kK-5Kk" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="NC0-7f-lxx"/>
+                            <constraint firstItem="0Cf-cB-mYv" firstAttribute="trailing" secondItem="rxg-kK-5Kk" secondAttribute="trailing" id="Nlj-aZ-JB2"/>
+                            <constraint firstItem="ket-CD-kOd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Ovv-DJ-p2N"/>
+                            <constraint firstItem="He7-ON-dOW" firstAttribute="top" secondItem="C40-Ra-gNt" secondAttribute="bottom" constant="8" id="P6S-b7-AdO"/>
+                            <constraint firstItem="He7-ON-dOW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="142" id="T6f-GB-CTz"/>
+                            <constraint firstItem="0Cf-cB-mYv" firstAttribute="top" secondItem="ket-CD-kOd" secondAttribute="bottom" constant="8" id="b0p-2P-tLe"/>
+                            <constraint firstItem="C40-Ra-gNt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="lCx-pv-YuG"/>
+                            <constraint firstItem="ket-CD-kOd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="oYE-Gq-40h"/>
+                            <constraint firstItem="ket-CD-kOd" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="pIX-mS-Zdg"/>
+                            <constraint firstItem="C40-Ra-gNt" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pQh-80-vJK"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
