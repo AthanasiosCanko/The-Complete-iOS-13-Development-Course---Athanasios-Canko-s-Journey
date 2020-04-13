@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="image_tap_recognizer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Recognizer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09e-HO-szd">
+                                <rect key="frame" x="20" y="44" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Q9N-DK-wYh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the image to toggle between Colosseum and the Great Wall of China." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kM-gY-Elx">
+                                <rect key="frame" x="20" y="102" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3Az-Dj-XBz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="colosseum" translatesAutoresizingMaskIntoConstraints="NO" id="96h-5o-h6f">
+                                <rect key="frame" x="20" y="288" width="374" height="320"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="0kM-gY-Elx" firstAttribute="trailing" secondItem="96h-5o-h6f" secondAttribute="trailing" id="0JC-ca-dKl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="96h-5o-h6f" secondAttribute="bottom" constant="254" id="DXS-Fg-E4M"/>
+                            <constraint firstItem="09e-HO-szd" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="J9z-Lc-SNa"/>
+                            <constraint firstItem="96h-5o-h6f" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Khc-Eh-WPb"/>
+                            <constraint firstItem="09e-HO-szd" firstAttribute="leading" secondItem="0kM-gY-Elx" secondAttribute="leading" id="NCz-wB-0xr"/>
+                            <constraint firstItem="0kM-gY-Elx" firstAttribute="top" secondItem="09e-HO-szd" secondAttribute="bottom" constant="8" id="Shz-pg-or5"/>
+                            <constraint firstItem="09e-HO-szd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Vcu-oY-52p"/>
+                            <constraint firstItem="09e-HO-szd" firstAttribute="trailing" secondItem="0kM-gY-Elx" secondAttribute="trailing" id="Ylz-Z9-5V3"/>
+                            <constraint firstItem="0kM-gY-Elx" firstAttribute="leading" secondItem="96h-5o-h6f" secondAttribute="leading" id="jKQ-aC-rw0"/>
+                            <constraint firstItem="09e-HO-szd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="rwf-ox-iII"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="96h-5o-h6f" id="0y4-TJ-mlT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-57.971014492753625" y="116.51785714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="colosseum" width="730" height="474"/>
+    </resources>
+</document>
