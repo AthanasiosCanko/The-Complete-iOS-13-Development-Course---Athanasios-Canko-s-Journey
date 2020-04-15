@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     
     var counter = 10
     var score = 0
+    var highScore = 0
+    
     var arrayOfPugs = [UIImageView]()
     var timer = Timer()
     var hideTimer = Timer()
@@ -69,6 +71,11 @@ class ViewController: UIViewController {
         hideTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(hidePugs), userInfo: nil, repeats: true)
         
         arrayOfPugs = [pug1, pug2, pug3, pug4, pug5, pug6, pug7, pug8, pug9]
+        
+        if let savedHighScore = UserDefaults.standard.object(forKey: "highScore") as? Int {
+            highScore = savedHighScore
+            highScorelabel.text = "High Score: \(highScore)"
+        }
     }
     
     @objc func hidePugs() {
@@ -96,6 +103,12 @@ class ViewController: UIViewController {
             
             for pug in arrayOfPugs {
                 pug.isHidden = true
+            }
+            
+            if score > highScore {
+                highScore = score
+                UserDefaults.standard.set(score, forKey: "highScore")
+                highScorelabel.text = "High SCore: \(score)"
             }
             
             let alert = UIAlertController(title: "Time's up!", message: "Wanna play again?", preferredStyle: UIAlertController.Style.alert)
