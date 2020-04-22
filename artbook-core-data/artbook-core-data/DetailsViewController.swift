@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailsViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -16,6 +17,28 @@ class DetailsViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     @IBOutlet weak var yearInput: UITextField!
     
     @IBAction func saveButton(_ sender: Any) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+
+        let newSubmission = NSEntityDescription.insertNewObject(forEntityName: "Paintings", into: context)
+        let imageData = imageView.image!.jpegData(compressionQuality: 0.7)
+        
+        newSubmission.setValue(nameInput.text!, forKey: "name")
+        newSubmission.setValue(artistInput.text!, forKey: "artist")
+        if let year = Int(yearInput.text!) {
+            newSubmission.setValue(year, forKey: "year")
+        }
+        
+        newSubmission.setValue(imageData, forKey: "image")
+        newSubmission.setValue(UUID(), forKey: "id")
+        
+        do {
+            try context.save()
+            print("Done")
+        }
+        catch {
+            print("Error")
+        }
     }
         
     override func viewDidLoad() {
