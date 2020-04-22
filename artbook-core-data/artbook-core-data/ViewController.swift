@@ -36,10 +36,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         getData()
     }
     
+    // This function retrieves all the data from CoreData for a respective entity
     func getData() {
+        // We create the context delegate to access CoreData
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
+        // We create a fetch request so we can pull data from CoreData
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Paintings")
         
         do {

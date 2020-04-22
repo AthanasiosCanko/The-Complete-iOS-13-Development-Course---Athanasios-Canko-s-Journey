@@ -17,21 +17,35 @@ class DetailsViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     @IBOutlet weak var yearInput: UITextField!
     
     @IBAction func saveButton(_ sender: Any) {
+        /*
+            Context in AppDelegate is responsibel for CoreData
+            Here we create a context delegate to be able to access CoreData
+        */
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
 
+        /*
+            Here we create a new object for the CoreData entity, and store it into the context
+        */
         let newSubmission = NSEntityDescription.insertNewObject(forEntityName: "Paintings", into: context)
-        let imageData = imageView.image!.jpegData(compressionQuality: 0.7)
         
+        /*
+            Here we set values for the new object, namely id, name and artist
+        */
+        newSubmission.setValue(UUID(), forKey: "id")
         newSubmission.setValue(nameInput.text!, forKey: "name")
         newSubmission.setValue(artistInput.text!, forKey: "artist")
+        
+        // We validate if the year input is an integer, then we save it
         if let year = Int(yearInput.text!) {
             newSubmission.setValue(year, forKey: "year")
         }
         
+        // We convert the image into binary data, and then store it in the object
+        let imageData = imageView.image!.jpegData(compressionQuality: 0.7)
         newSubmission.setValue(imageData, forKey: "image")
-        newSubmission.setValue(UUID(), forKey: "id")
         
+        // We try saving the new object
         do {
             try context.save()
             print("Done")
