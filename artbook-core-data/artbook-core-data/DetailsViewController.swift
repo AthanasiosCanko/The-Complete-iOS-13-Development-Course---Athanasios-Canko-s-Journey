@@ -16,9 +16,12 @@ class DetailsViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     @IBOutlet weak var artistInput: UITextField!
     @IBOutlet weak var yearInput: UITextField!
     
+    var chosenPainting = ""
+    var chosenPaintingId: UUID?
+    
     @IBAction func saveButton(_ sender: Any) {
         /*
-            Context in AppDelegate is responsibel for CoreData
+            Context in AppDelegate is responsible for CoreData
             Here we create a context delegate to be able to access CoreData
         */
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -53,10 +56,55 @@ class DetailsViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         catch {
             print("Error")
         }
+    
+        NotificationCenter.default.post(name: NSNotification.Name.init("newData"), object: nil)
+        self.navigationController?.popViewController(animated: true)
     }
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        if chosenPainting != "" {
+            // Core Data
+            let stringUUID = chosenPaintingId!.uuidString
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Paintings")
+            fetchRequest.predicate = NSPredicate(format: "id = %@", stringUUID)
+            
+            do {
+                let results = try context.fetch(fetchRequest)
+                
+                if results.count > 0 {
+                    for result in results as! [NSManagedObject] {
+                        if let name = result.value(forKey: "name") as? String {
+                            nameInput.text = name
+                        }
+                        
+                        if let artist = result.value(forKey: "artist") as? String {
+                            artistInput.text = artist
+                        }
+                        
+                        if let year = result.value(forKey: "year") as? Int {
+                            yearInput.text = String(year)
+                        }
+                        
+                        if let image = result.value(forKey: "image") as? Data {
+                            imageView.image = UIImage(data: image)
+                        }
+                    }
+                }
+            }
+            catch {
+                
+            }
+        }
+        else {
+            nameInput.text = ""
+            artistInput.text = ""
+            yearInput.text = ""
+        }
 //        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
 //        view.addGestureRecognizer(tap)
         
