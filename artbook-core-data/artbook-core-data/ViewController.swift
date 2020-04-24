@@ -93,4 +93,39 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         selectedPaintingId = idArray[indexPath.row]
         performSegue(withIdentifier: "toDetailsVC", sender: nil)
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            
+            let chosenId = idArray[indexPath.row].uuidString
+            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Paintings")
+            fetchRequest.returnsObjectsAsFaults = false
+            fetchRequest.predicate = NSPredicate(format: "id = %@", chosenId)
+            
+            do {
+                let results = try context.fetch(fetchRequest)
+                
+                for result in results as! [NSManagedObject] {
+                    context.delete(result)
+                    
+                    idArray.remove(at: indexPath.row)
+                    nameArray.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+                    
+                    do {
+                        try context.save()
+                    }
+                    catch {
+                        //
+                    }
+                }
+            }
+            catch {
+                //
+            }
+        }
+    }
 }
