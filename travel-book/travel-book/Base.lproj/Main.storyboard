@@ -16,20 +16,57 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SaF-RL-weu">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="128" width="414" height="696"/>
                             </mapView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bZr-wU-fQC">
+                                <rect key="frame" x="20" y="44" width="374" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="Pes-rm-xRi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Comment..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uq9-DR-h95">
+                                <rect key="frame" x="20" y="86" width="374" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="iEb-Tj-2Ho"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwR-uA-TTV">
+                                <rect key="frame" x="172" y="832" width="70" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ctg-QZ-Zgj"/>
+                                    <constraint firstAttribute="width" constant="70" id="ulj-5C-Eyn"/>
+                                </constraints>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GDD-kx-aET"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="SaF-RL-weu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5UC-d1-yOp"/>
-                            <constraint firstItem="SaF-RL-weu" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="6Bg-vV-vFU"/>
-                            <constraint firstItem="SaF-RL-weu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="EaF-tS-5gu"/>
-                            <constraint firstItem="SaF-RL-weu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Tth-Eo-aMn"/>
+                            <constraint firstItem="kwR-uA-TTV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="20s-pQ-5rm"/>
+                            <constraint firstItem="SaF-RL-weu" firstAttribute="top" secondItem="uq9-DR-h95" secondAttribute="bottom" constant="8" id="463-Dl-iFR"/>
+                            <constraint firstItem="bZr-wU-fQC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="FsS-IW-xuG"/>
+                            <constraint firstItem="uq9-DR-h95" firstAttribute="top" secondItem="bZr-wU-fQC" secondAttribute="bottom" constant="8" id="Y1S-jc-sCu"/>
+                            <constraint firstItem="SaF-RL-weu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Z93-bb-y2k"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uq9-DR-h95" secondAttribute="trailing" constant="20" id="Zsq-yf-jhB"/>
+                            <constraint firstItem="bZr-wU-fQC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="aO7-kd-uIV"/>
+                            <constraint firstItem="SaF-RL-weu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="de2-7J-Yvm"/>
+                            <constraint firstItem="kwR-uA-TTV" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fJA-aK-tSw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bZr-wU-fQC" secondAttribute="trailing" constant="20" id="kxT-f7-9IN"/>
+                            <constraint firstItem="uq9-DR-h95" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="wUS-t9-ald"/>
+                            <constraint firstItem="kwR-uA-TTV" firstAttribute="top" secondItem="SaF-RL-weu" secondAttribute="bottom" constant="8" id="wdK-42-x3K"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="commentText" destination="uq9-DR-h95" id="9Ez-ko-80q"/>
                         <outlet property="mapView" destination="SaF-RL-weu" id="Njc-Ag-fjA"/>
+                        <outlet property="nameText" destination="bZr-wU-fQC" id="o3t-nT-5uW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
