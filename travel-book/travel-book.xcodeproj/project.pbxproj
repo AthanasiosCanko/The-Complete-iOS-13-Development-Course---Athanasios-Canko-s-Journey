@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		699C1185245A05B9007A3521 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699C1184245A05B9007A3521 /* ListViewController.swift */; };
 		69E852C52457797700879366 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E852C42457797700879366 /* AppDelegate.swift */; };
 		69E852C72457797700879366 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E852C62457797700879366 /* SceneDelegate.swift */; };
 		69E852C92457797700879366 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E852C82457797700879366 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		699C1184245A05B9007A3521 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		69E852C12457797700879366 /* travel-book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "travel-book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69E852C42457797700879366 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69E852C62457797700879366 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				69E852D22457797D00879366 /* LaunchScreen.storyboard */,
 				69E852D52457797D00879366 /* Info.plist */,
 				69E852CD2457797700879366 /* travel_book.xcdatamodeld */,
+				699C1184245A05B9007A3521 /* ListViewController.swift */,
 			);
 			path = "travel-book";
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 				69E852CF2457797700879366 /* travel_book.xcdatamodeld in Sources */,
 				69E852C92457797700879366 /* ViewController.swift in Sources */,
 				69E852C52457797700879366 /* AppDelegate.swift in Sources */,
+				699C1185245A05B9007A3521 /* ListViewController.swift in Sources */,
 				69E852C72457797700879366 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
