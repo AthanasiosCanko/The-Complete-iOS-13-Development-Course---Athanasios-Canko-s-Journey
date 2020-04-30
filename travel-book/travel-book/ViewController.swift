@@ -74,6 +74,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                                     
                                     nameText.text = title
                                     commentText.text = subtitle
+                                    
+                                    locationManager.stopUpdatingLocation()
+                                    
+                                    let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
+                                    let region = MKCoordinateRegion(center: coordinate, span: span)
+                                    mapView.setRegion(region, animated: true)
                                 }
                             }
                         }
@@ -87,12 +93,14 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
-        
-        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-        let region = MKCoordinateRegion(center: location, span: span)
-        
-        mapView.setRegion(region, animated: true)
+        if chosenTitle == "" {
+            let location = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
+            
+            let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+            let region = MKCoordinateRegion(center: location, span: span)
+            
+            mapView.setRegion(region, animated: true)
+        }
         
     }
     
