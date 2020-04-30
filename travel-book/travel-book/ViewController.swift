@@ -14,8 +14,8 @@ import CoreData
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     let locationManager = CLLocationManager()
-    var latitude = Double()
-    var longitude = Double()
+    var chosenLatitude = Double()
+    var chosenLongitude = Double()
     
     var chosenTitle = String()
     var chosenTitleId: UUID?
@@ -37,8 +37,52 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         longPress.minimumPressDuration = 3
         mapView.addGestureRecognizer(longPress)
         
-        if let id = chosenTitleId as? UUID {
-            print(id.uuidString)
+        if chosenTitle != "" {
+            print(chosenTitle)
+            print(chosenTitleId)
+            
+            let stringId = chosenTitleId!.uuidString
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Places")
+            fetchRequest.predicate = NSPredicate(format: "id = %@", stringId)
+            fetchRequest.returnsObjectsAsFaults = false
+            
+            do {
+                let results = try context.fetch(fetchRequest)
+                
+                let annotation = MKPointAnnotation()
+                
+                for result in results as! [NSManagedObject] {
+                    if let title = result.value(forKey: "title") as? String {
+                        annotation.title = title
+                        
+                        if let subtitle = result.value(forKey: "subtitle") as? String {
+                            annotation.subtitle = subtitle
+                            
+                            if let latitude = result.value(forKey: "latitude") as? Double {
+                                chosenLatitude = latitude
+                                
+                                if let longitude = result.value(forKey: "longitude") as? Double {
+                                    chosenLongitude = longitude
+                                    
+                                    let coordinate = CLLocationCoordinate2D(latitude: chosenLatitude, longitude: chosenLongitude)
+                                    annotation.coordinate = coordinate
+                                    mapView.addAnnotation(annotation)
+                                    
+                                    nameText.text = title
+                                    commentText.text = subtitle
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch {
+                //
+            }
         }
     }
     
@@ -57,8 +101,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             let touchPoint = gestureRecognizer.location(in: self.mapView)
             let coordinates = mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
             
-            latitude = coordinates.latitude
-            longitude = coordinates.longitude
+            chosenLatitude = coordinates.latitude
+            chosenLongitude = coordinates.longitude
             
             let annotation = MKPointAnnotation()
             annotation.title = nameText.text
@@ -77,8 +121,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         newPlace.setValue(nameText.text, forKey: "title")
         newPlace.setValue(commentText.text, forKey: "subtitle")
-        newPlace.setValue(latitude, forKey: "latitude")
-        newPlace.setValue(longitude, forKey: "longitude")
+        newPlace.setValue(chosenLatitude, forKey: "latitude")
+        newPlace.setValue(chosenLongitude, forKey: "longitude")
         newPlace.setValue(UUID(), forKey: "id")
         
         do {
