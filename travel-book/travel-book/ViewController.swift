@@ -12,6 +12,8 @@ import CoreLocation
 import CoreData
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+    
+    
 
     let locationManager = CLLocationManager()
     var chosenLatitude = Double()
@@ -92,6 +94,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if chosenTitle == "" {
             let location = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
@@ -101,8 +104,48 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             
             mapView.setRegion(region, animated: true)
         }
-        
     }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        if chosenTitle != nil {
+            var requestLocation = CLLocation(latitude: chosenLatitude, longitude: chosenLongitude)
+            
+            CLGeocoder().reverseGeocodeLocation(requestLocation) { (placemarks, error) in
+                if let verifiedPlacemarks = placemarks {
+                    if verifiedPlacemarks.count > 0 {
+                        let newPlacemark = MKPlacemark(placemark: verifiedPlacemarks[0])
+                        let item = MKMapItem(placemark: newPlacemark)
+                        item.name = self.chosenTitle
+                        
+                        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+                        item.openInMaps(launchOptions: launchOptions)
+                    }
+                }
+            }
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        let reuseId = "myAnnotation"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+        
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView?.canShowCallout = true
+            pinView?.tintColor = .green
+            
+            let button = UIButton(type: UIButton.ButtonType.detailDisclosure)
+            pinView?.rightCalloutAccessoryView = button
+        }
+        
+        return pinView
+    }
+    
     
     @objc func getLocation(gestureRecognizer: UIGestureRecognizer) {
         if gestureRecognizer.state == .began {
