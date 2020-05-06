@@ -110,7 +110,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         if chosenTitle != nil {
-            var requestLocation = CLLocation(latitude: chosenLatitude, longitude: chosenLongitude)
+            let requestLocation = CLLocation(latitude: chosenLatitude, longitude: chosenLongitude)
             
             CLGeocoder().reverseGeocodeLocation(requestLocation) { (placemarks, error) in
                 if let verifiedPlacemarks = placemarks {
