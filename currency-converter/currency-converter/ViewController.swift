@@ -39,10 +39,20 @@ class ViewController: UIViewController {
                 
                 // 2.
                 if data != nil {
-                    //
+                    do {
+                        let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)
+                        
+                        DispatchQueue.main.async {
+                            print(jsonResult)
+                        }
+                    }
+                    catch {
+                        
+                    }
                 }
             }
         }
+        task.resume()
     }
     
     override func viewDidLoad() {
