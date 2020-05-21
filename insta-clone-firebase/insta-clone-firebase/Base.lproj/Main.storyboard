@@ -10,7 +10,7 @@
         <!--Upload-->
         <scene sceneID="v5C-N5-EKc">
             <objects>
-                <viewController id="AcJ-5c-2HE" sceneMemberID="viewController">
+                <viewController id="AcJ-5c-2HE" customClass="UploadViewController" customModule="insta_clone_firebase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kYC-aQ-xUz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,12 +21,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aOx-3s-GvE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="401" y="443"/>
+            <point key="canvasLocation" x="725" y="129"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="SsL-lr-L8k">
+            <objects>
+                <viewController id="zpy-bH-rGq" customClass="SettingsViewController" customModule="insta_clone_firebase" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gl6-Ja-hBV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IY0-lA-URg">
+                                <rect key="frame" x="157" y="413" width="100" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutClicked:" destination="zpy-bH-rGq" eventType="touchUpInside" id="2Cs-k2-Kyj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="qT0-9J-8vp"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="s.circle.fill" catalog="system" id="LiZ-7Y-KET"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toViewController" id="TBi-xG-XpD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fJJ-7a-yYK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="69.565217391304358" y="614.73214285714278"/>
         </scene>
         <!--Feed-->
         <scene sceneID="Dx0-3V-KFY">
             <objects>
-                <viewController id="mTe-l9-WaO" sceneMemberID="viewController">
+                <viewController id="mTe-l9-WaO" customClass="FeedViewController" customModule="insta_clone_firebase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ikB-h4-EBR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c7U-WO-fi8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="401" y="-207"/>
+            <point key="canvasLocation" x="72" y="-339"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="UyZ-Mv-5ZR">
@@ -52,6 +81,7 @@
                     <connections>
                         <segue destination="mTe-l9-WaO" kind="relationship" relationship="viewControllers" id="1xS-qX-gfz"/>
                         <segue destination="AcJ-5c-2HE" kind="relationship" relationship="viewControllers" id="lRF-4n-rtx"/>
+                        <segue destination="zpy-bH-rGq" kind="relationship" relationship="viewControllers" id="bfo-ic-DRb"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n4C-4J-rSR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -63,7 +93,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="insta_clone_firebase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dc8-9Z-IBm">
@@ -98,6 +128,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="34z-gx-YDx"/>
                     <connections>
                         <outlet property="emailText" destination="dc8-9Z-IBm" id="otY-bx-9Q2"/>
                         <outlet property="passwordText" destination="OnC-MO-QUs" id="C3S-Ek-QJO"/>
@@ -111,6 +142,7 @@
     </scenes>
     <resources>
         <image name="f.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="s.circle.fill" catalog="system" width="128" height="121"/>
         <image name="u.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>
