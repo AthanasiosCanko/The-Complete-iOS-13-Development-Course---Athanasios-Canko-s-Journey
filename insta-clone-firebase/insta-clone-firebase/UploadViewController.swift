@@ -54,6 +54,9 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                                 }
                                 else {
                                     print("Success")
+                                    self.imageView.image = UIImage(systemName: "pencil")
+                                    self.commentInput.text = ""
+                                    self.tabBarController?.selectedIndex = 0
                                 }
                             })
                         }
