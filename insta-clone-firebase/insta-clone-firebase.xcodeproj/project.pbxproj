@@ -17,6 +17,7 @@
 		697DF46524734D8F000E476F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 697DF46324734D8F000E476F /* Main.storyboard */; };
 		697DF46724734D92000E476F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 697DF46624734D92000E476F /* Assets.xcassets */; };
 		697DF46A24734D92000E476F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 697DF46824734D92000E476F /* LaunchScreen.storyboard */; };
+		699EADCE247F10FE005F712E /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699EADCD247F10FE005F712E /* FeedCell.swift */; };
 		69B1D99F24743E8F00708A27 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 69B1D99E24743E8F00708A27 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		697DF46624734D92000E476F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		697DF46924734D92000E476F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		697DF46B24734D92000E476F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		699EADCD247F10FE005F712E /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		69B1D99E24743E8F00708A27 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C0D5DBFF1199708C6FC556E9 /* Pods_insta_clone_firebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_insta_clone_firebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4C0482BE243E3226D4DA2F5 /* Pods-insta-clone-firebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-insta-clone-firebase.release.xcconfig"; path = "Target Support Files/Pods-insta-clone-firebase/Pods-insta-clone-firebase.release.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				691E7BCE2476C10300ED3C9C /* FeedViewController.swift */,
 				691E7BD22476C11E00ED3C9C /* UploadViewController.swift */,
 				691E7BD42476C12A00ED3C9C /* SettingsViewController.swift */,
+				699EADCD247F10FE005F712E /* FeedCell.swift */,
 			);
 			path = "insta-clone-firebase";
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				699EADCE247F10FE005F712E /* FeedCell.swift in Sources */,
 				697DF46224734D8F000E476F /* ViewController.swift in Sources */,
 				691E7BD32476C11E00ED3C9C /* UploadViewController.swift in Sources */,
 				697DF45E24734D8F000E476F /* AppDelegate.swift in Sources */,
