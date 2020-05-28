@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 import Firebase
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -17,10 +18,16 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var userImageArray = [String]()
     
     func getDataFromFirestore() {
+//        self.userEmailArray.removeAll(keepingCapacity: false)
+//        self.userCommentArray.removeAll(keepingCapacity: false)
+//        self.likeArray.removeAll(keepingCapacity: false)
+//        self.userImageArray.removeAll(keepingCapacity: false)
+        
         let fireStoreDatabase = Firestore.firestore()
         fireStoreDatabase.collection("Posts").addSnapshotListener { (snapshot, error) in
             if error == nil {
                 if snapshot != nil {
+                    
                     for document in snapshot!.documents {
                         if let postedBy = document.get("postedBy") as? String {
                             self.userEmailArray.append(postedBy)
@@ -54,7 +61,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.userEmailLabel.text = userEmailArray[indexPath.row]
         cell.commentLabel.text = userCommentArray[indexPath.row]
         cell.likeLabel.text = String(likeArray[indexPath.row])
-        cell.userImageView.image = UIImage(systemName: "trash")
+        cell.userImageView.sd_setImage(with: URL(string: userImageArray[indexPath.row]), completed: nil)
         return cell
     }
     
