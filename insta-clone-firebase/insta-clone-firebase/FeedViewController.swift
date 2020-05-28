@@ -16,19 +16,26 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var userCommentArray = [String]()
     var likeArray = [Int]()
     var userImageArray = [String]()
+    var documentIdArray = [String]()
     
     func getDataFromFirestore() {
-//        self.userEmailArray.removeAll(keepingCapacity: false)
-//        self.userCommentArray.removeAll(keepingCapacity: false)
-//        self.likeArray.removeAll(keepingCapacity: false)
-//        self.userImageArray.removeAll(keepingCapacity: false)
         
         let fireStoreDatabase = Firestore.firestore()
-        fireStoreDatabase.collection("Posts").addSnapshotListener { (snapshot, error) in
+        fireStoreDatabase.collection("Posts").order(by: "date", descending: false).addSnapshotListener { (snapshot, error) in
             if error == nil {
                 if snapshot != nil {
                     
+
+                    self.userCommentArray.removeAll(keepingCapacity: false)
+                    self.likeArray.removeAll(keepingCapacity: false)
+                    self.userImageArray.removeAll(keepingCapacity: false)
+                    self.userEmailArray.removeAll(keepingCapacity: false)
+                    self.documentIdArray.removeAll(keepingCapacity: false)
+                    
                     for document in snapshot!.documents {
+                        var documentID = document.documentID
+                        self.documentIdArray.append(documentID)
+                        
                         if let postedBy = document.get("postedBy") as? String {
                             self.userEmailArray.append(postedBy)
                         }
@@ -46,6 +53,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                         }
                     }
                     
+                    print(self.userImageArray)
                     self.tableView.reloadData()
                 }
             }
@@ -62,6 +70,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.commentLabel.text = userCommentArray[indexPath.row]
         cell.likeLabel.text = String(likeArray[indexPath.row])
         cell.userImageView.sd_setImage(with: URL(string: userImageArray[indexPath.row]), completed: nil)
+        cell.documentIdLabel.text = documentIdArray[indexPath.row]
         return cell
     }
     
