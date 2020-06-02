@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_insta_clone_firebase_OneSignalNotificationServiceExtension : NSObject
+@end
+@implementation PodsDummy_Pods_insta_clone_firebase_OneSignalNotificationServiceExtension
+@end

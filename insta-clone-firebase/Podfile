@@ -11,6 +11,12 @@ pod 'Firebase/Core'
 pod 'Firebase/Firestore'
 pod 'Firebase/Storage'
 pod 'SDWebImage'
+pod 'OneSignal', '>= 2.11.2', '< 3.0'
+
+target 'OneSignalNotificationServiceExtension' do
+  #only copy below line
+  pod 'OneSignal', '>= 2.11.2', '< 3.0'
+end
 
   # Pods for insta-clone-firebase
 
