@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import OneSignal
 
 class FeedCell: UITableViewCell {
     
@@ -33,6 +34,24 @@ class FeedCell: UITableViewCell {
             let likeStore = ["likes": likeCount + 1] as [String: Any]
             
             firestoreDatabase.collection("Posts").document(documentIdLabel.text!).setData(likeStore, merge: true)
+        }
+        
+        let email = userEmailLabel.text!
+        
+        firestoreDatabase.collection("PlayerId").whereField("email", isEqualTo: email).getDocuments { (snapshot, error) in
+            if error == nil {
+                if snapshot?.isEmpty == false {
+                    for document in snapshot!.documents {
+                        if let playerId = document.get("playerId") as? String {
+                            OneSignal.postNotification([
+                                "contents": ["en": "\(email) likes your post."],
+                                "include_player_ids": ["\(playerId)"]
+                            ])
+                            print("Success")
+                        }
+                    }
+                }
+            }
         }
     }
     
