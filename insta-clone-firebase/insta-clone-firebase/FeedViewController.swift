@@ -9,6 +9,7 @@
 import UIKit
 import SDWebImage
 import Firebase
+import OneSignal
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -82,5 +83,14 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         
         getDataFromFirestore()
+        
+        OneSignal.postNotification([
+            "contents": [
+                "en": "Test Message"
+            ],
+            "include_player_ids": [
+                "6e9ac2a6-089c-4798-87b9-b5a2bb0bac21"
+            ]
+        ])
     }
 }
