@@ -84,13 +84,34 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         getDataFromFirestore()
         
-        OneSignal.postNotification([
-            "contents": [
-                "en": "Test Message"
-            ],
-            "include_player_ids": [
-                "6e9ac2a6-089c-4798-87b9-b5a2bb0bac21"
-            ]
-        ])
+        let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
+        
+        if let newPlayerId = status.subscriptionStatus.userId {
+            let firestore = Firestore.firestore()
+            
+            let playerIdDictionary = ["email": Auth.auth().currentUser?.email, "playerId": newPlayerId] as! [String: Any]
+            
+            firestore.collection("PlayerId").addDocument(data: playerIdDictionary) { (error) in
+                if error != nil {
+                    print(error?.localizedDescription)
+                    let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+                    let ok = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
+                    alert.addAction(ok)
+                    self.present(alert, animated: true, completion: nil)
+                }
+                else {
+                    print("Success")
+                }
+            }
+        }
+        
+//        OneSignal.postNotification([
+//            "contents": [
+//                "en": "Test Message"
+//            ],
+//            "include_player_ids": [
+//                "6e9ac2a6-089c-4798-87b9-b5a2bb0bac21"
+//            ]
+//        ])
     }
 }
