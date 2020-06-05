@@ -89,20 +89,53 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let newPlayerId = status.subscriptionStatus.userId {
             let firestore = Firestore.firestore()
             
-            let playerIdDictionary = ["email": Auth.auth().currentUser?.email, "playerId": newPlayerId] as! [String: Any]
-            
-            firestore.collection("PlayerId").addDocument(data: playerIdDictionary) { (error) in
-                if error != nil {
-                    print(error?.localizedDescription)
-                    let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertController.Style.alert)
-                    let ok = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
-                    alert.addAction(ok)
-                    self.present(alert, animated: true, completion: nil)
-                }
-                else {
-                    print("Success")
+            firestore.collection("PlayerId").whereField("email", isEqualTo: Auth.auth().currentUser?.email).getDocuments { (snapshot, error) in
+                if error == nil {
+                    if snapshot?.isEmpty == false {
+                        for document in snapshot!.documents {
+                            if let playerIdFromFirestore = document.get("playerId") as? String {
+                                let documentId = document.documentID
+                                
+                                if newPlayerId != playerIdFromFirestore {
+                                    
+                                    let playerIdDictionary = ["email": Auth.auth().currentUser?.email, "playerId": newPlayerId] as! [String: Any]
+                                    
+                                    firestore.collection("PlayerId").addDocument(data: playerIdDictionary) { (error) in
+                                        if error == nil {
+                                            print("Success")
+                                        }
+                                    }
+                                }
+                                
+                            }
+                        }
+                    }
+                    else {
+                        let playerIdDictionary = ["email": Auth.auth().currentUser?.email, "playerId": newPlayerId] as! [String: Any]
+                        
+                        firestore.collection("PlayerId").addDocument(data: playerIdDictionary) { (error) in
+                            if error == nil {
+                                print("Success")
+                            }
+                        }
+                    }
                 }
             }
+            
+//            let playerIdDictionary = ["email": Auth.auth().currentUser?.email, "playerId": newPlayerId] as! [String: Any]
+//
+//            firestore.collection("PlayerId").addDocument(data: playerIdDictionary) { (error) in
+//                if error != nil {
+//                    print(error?.localizedDescription)
+//                    let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+//                    let ok = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
+//                    alert.addAction(ok)
+//                    self.present(alert, animated: true, completion: nil)
+//                }
+//                else {
+//                    print("Success")
+//                }
+//            }
         }
         
 //        OneSignal.postNotification([
