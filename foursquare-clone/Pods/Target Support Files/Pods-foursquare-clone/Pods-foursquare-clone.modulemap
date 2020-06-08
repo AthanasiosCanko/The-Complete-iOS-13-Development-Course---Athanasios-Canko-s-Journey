@@ -1,0 +1,6 @@
+framework module Pods_foursquare_clone {
+  umbrella header "Pods-foursquare-clone-umbrella.h"
+
+  export *
+  module * { export * }
+}
