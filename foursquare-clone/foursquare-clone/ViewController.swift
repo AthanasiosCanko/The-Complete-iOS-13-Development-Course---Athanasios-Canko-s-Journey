@@ -11,6 +11,38 @@ import Parse
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var usernameText: UITextField!
+    @IBOutlet weak var passwordText: UITextField!
+    @IBAction func signIn(_ sender: Any) {
+    }
+    
+    @IBAction func signUp(_ sender: Any) {
+        if usernameText.text != "" && passwordText.text != "" {
+            let user = PFUser()
+            user.username = usernameText.text!
+            user.password = passwordText.text!
+            
+            user.signUpInBackground { (success, error) in
+                if success == true {
+                    print("OK!")
+                }
+                else {
+                    self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Error signing up.")
+                }
+            }
+        }
+        else {
+            makeAlert(title: "Error", message: "Username / Password ??")
+        }
+    }
+    
+    func makeAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let ok = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -34,6 +66,8 @@ class ViewController: UIViewController {
 //                print(error?.localizedDescription)
 //            }
 //        }
+        
+        
     }
 
 
