@@ -14,6 +14,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBAction func signIn(_ sender: Any) {
+        if usernameText.text! != "" && passwordText.text! != "" {
+            PFUser.logInWithUsername(inBackground: usernameText.text!, password: passwordText.text!) { (user, error) in
+                if error != nil {
+                    self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Error")
+                }
+                else {
+                    print(user?.username)
+                }
+            }
+        }
     }
     
     @IBAction func signUp(_ sender: Any) {
