@@ -20,7 +20,7 @@ class ViewController: UIViewController {
                     self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Error")
                 }
                 else {
-                    print(user?.username)
+                    self.performSegue(withIdentifier: "toPlacesVC", sender: nil)
                 }
             }
         }
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
             
             user.signUpInBackground { (success, error) in
                 if success == true {
-                    print("OK!")
+                    self.performSegue(withIdentifier: "toPlacesVC", sender: nil)
                 }
                 else {
                     self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Error signing up.")
