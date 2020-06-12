@@ -21,6 +21,7 @@ class PlacesViewController: UIViewController {
     
     @objc func addButtonClicked() {
         //
+        self.performSegue(withIdentifier: "addNewPlace", sender: nil)
     }
     
     @objc func logOut() {
