@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddPlaceVC: UIViewController {
+class AddPlaceVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var placeNameText: UITextField!
     @IBOutlet weak var placeTypeText: UITextField!
@@ -18,7 +18,27 @@ class AddPlaceVC: UIViewController {
         self.performSegue(withIdentifier: "toMapVC", sender: nil)
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        placeImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(changeImage))
+        placeImageView.addGestureRecognizer(tap)
+    }
+    
+    @objc func changeImage() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.editedImage] as? UIImage {
+            placeImageView.image = image
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
