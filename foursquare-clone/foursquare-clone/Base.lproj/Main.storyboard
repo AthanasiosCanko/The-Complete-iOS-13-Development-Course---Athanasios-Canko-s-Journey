@@ -98,7 +98,7 @@
             <objects>
                 <viewController id="qs5-3O-cDb" customClass="DetailsVC" customModule="foursquare_clone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="29M-VD-aQm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tkk-25-5tG">
@@ -152,7 +152,7 @@
             <objects>
                 <viewController id="e1Q-4z-DNY" customClass="AddPlaceVC" customModule="foursquare_clone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kmi-1d-PHD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="48P-RG-MHl">
@@ -222,11 +222,12 @@
                     <navigationItem key="navigationItem" id="mA2-W0-XXA"/>
                     <connections>
                         <outlet property="mapKit" destination="moe-Ls-pBg" id="33d-cX-Nsl"/>
+                        <segue destination="gh2-Yn-fEP" kind="presentation" identifier="fromMapVCtoPlacesVC" modalPresentationStyle="fullScreen" id="xyx-eb-Cqe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="adN-8B-wtD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5697.1014492753629" y="105.80357142857143"/>
+            <point key="canvasLocation" x="5762" y="106"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="i1o-5t-fM3">
@@ -267,6 +268,9 @@
             <point key="canvasLocation" x="4786.9565217391309" y="105.80357142857143"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="xyx-eb-Cqe"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="photo" catalog="system" width="128" height="93"/>
     </resources>

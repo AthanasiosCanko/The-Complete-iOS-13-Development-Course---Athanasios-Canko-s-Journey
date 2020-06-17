@@ -8,14 +8,16 @@
 
 import UIKit
 import MapKit
+import Parse
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapKit: MKMapView!
     
     var locationManager = CLLocationManager()
-    var chosenLatitude = String()
-    var chosenLongitude = String()
+//    DEPRECATED
+//    var chosenLatitude = String()
+//    var chosenLongitude = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +49,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             annotation.subtitle = PlaceModel.sharedInstance.placeType
             
             mapKit.addAnnotation(annotation)
-            chosenLatitude = String(coordinate.latitude)
-            chosenLongitude = String(coordinate.longitude)
+            PlaceModel.sharedInstance.placeLatitude = String(coordinate.latitude)
+            PlaceModel.sharedInstance.placeLongitude = String(coordinate.longitude)
         }
     }
     
@@ -66,6 +68,29 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     @objc func savePlace() {
+        let placeModel = PlaceModel.sharedInstance
         
+        let object = PFObject(className: "Places")
+        object["name"] = placeModel.placeName
+        object["type"] = placeModel.placeType
+        object["atmosphere"] = placeModel.placeAtmosphere
+        object["latitude"] = placeModel.placeLatitude
+        object["longitude"] = placeModel.placeLongitude
+        
+        if let imageData = PlaceModel.sharedInstance.placeImage.jpegData(compressionQuality: 0.5) {
+            object["image"] = PFFileObject(name: "image.jpg", data: imageData)
+        }
+        
+        object.saveInBackground { (success, error) in
+            if error == nil {
+                self.performSegue(withIdentifier: "fromMapVCtoPlacesVC", sender: nil)
+            }
+            else {
+                let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+                let ok = UIAlertAction(title: "ok", style: UIAlertAction.Style.default, handler: nil)
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
 }
