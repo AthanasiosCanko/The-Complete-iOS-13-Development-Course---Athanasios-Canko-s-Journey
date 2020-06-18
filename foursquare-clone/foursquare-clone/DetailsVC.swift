@@ -8,8 +8,11 @@
 
 import UIKit
 import MapKit
+import Parse
 
 class DetailsVC: UIViewController {
+    
+    var chosenPlaceId = ""
     
     @IBOutlet weak var detailsImageView: UIImageView!
     @IBOutlet weak var detailsNameLabel: UILabel!
@@ -19,19 +22,16 @@ class DetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        print(chosenPlaceId)
+        
+        let query = PFQuery(className: "Places")
+        query.whereKey("objectId", equalTo: chosenPlaceId)
+        query.findObjectsInBackground { (objects, error) in
+            if error == nil {
+                print(objects)
+            }
+            else {
+            }
+        }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
