@@ -70,6 +70,18 @@ class DetailsVC: UIViewController {
                                 }
                             }
                         }
+                        
+                        let coordinate = CLLocationCoordinate2D(latitude: self.chosenLatitude, longitude: self.chosenLongitude)
+                        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                        let region = MKCoordinateRegion(center: coordinate, span: span)
+                        
+                        let annotation = MKPointAnnotation()
+                        annotation.title = self.detailsNameLabel.text!
+                        annotation.subtitle = self.detailsTypeLabel.text!
+                        annotation.coordinate = coordinate
+                        
+                        self.detailsMapView.setRegion(region, animated: true)
+                        self.detailsMapView.addAnnotation(annotation)
                     }
                     
                 }
