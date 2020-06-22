@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import Parse
 
-class DetailsVC: UIViewController {
+class DetailsVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     var chosenPlaceId = ""
     var chosenLatitude = Double()
@@ -24,9 +24,49 @@ class DetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        detailsMapView.delegate = self
         print(chosenPlaceId)
         
         getDataFromParse()
+    }
+    
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let location = CLLocation(latitude: chosenLatitude, longitude: chosenLongitude)
+        
+        CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
+            if error == nil {
+                if placemarks!.count > 0 {
+                    let placemark = MKPlacemark(placemark: placemarks![0])
+                    let mapItem = MKMapItem(placemark: placemark)
+                    mapItem.name = self.detailsNameLabel.text
+                    
+                    let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+                    mapItem.openInMaps(launchOptions: launchOptions)
+                }
+            }
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        let reuseId = "pin"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+        
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView?.canShowCallout = true
+            let button = UIButton(type: UIButton.ButtonType.detailDisclosure)
+            pinView?.rightCalloutAccessoryView = button
+        }
+        else {
+            pinView?.annotation = annotation
+        }
+        
+        return pinView
     }
     
     func getDataFromParse() {
@@ -83,7 +123,6 @@ class DetailsVC: UIViewController {
                         self.detailsMapView.setRegion(region, animated: true)
                         self.detailsMapView.addAnnotation(annotation)
                     }
-                    
                 }
                 else {
                     print("No objects.")
