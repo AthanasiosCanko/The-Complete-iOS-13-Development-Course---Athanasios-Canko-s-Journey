@@ -21,6 +21,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var box4 = SKSpriteNode()
     var box5 = SKSpriteNode()
     
+    var score = 0
+    var scoreLabel = SKLabelNode()
+    
     var originalPosition: CGPoint?
     
     enum ColliderType: UInt32 {
@@ -48,11 +51,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var size = CGSize(width: boxTexture.size().width / 6, height: boxTexture.size().height / 6)
         originalPosition = bird.position
         
+        bird.physicsBody = SKPhysicsBody(circleOfRadius: birdTexture.size().height / 14)
+        
         bird.physicsBody?.contactTestBitMask = ColliderType.Bird.rawValue
-        bird.physicsBody?.collisionBitMask = ColliderType.Bird.rawValue
+        bird.physicsBody?.collisionBitMask = ColliderType.Box.rawValue
         bird.physicsBody?.categoryBitMask = ColliderType.Bird.rawValue
         
-        bird.physicsBody = SKPhysicsBody(circleOfRadius: birdTexture.size().height / 14)
         bird.physicsBody?.affectedByGravity = false
         bird.physicsBody?.isDynamic = true
         bird.physicsBody?.mass = 0.1
@@ -97,6 +101,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         box5.physicsBody?.isDynamic = true
         box5.physicsBody?.mass = 0.4
         box5.physicsBody?.collisionBitMask = ColliderType.Bird.rawValue
+        
+        scoreLabel.fontName = "Helvetica"
+        scoreLabel.fontSize = 60
+        scoreLabel.text = "0"
+        scoreLabel.position = CGPoint(x: 0, y: self.frame.height / 4)
+        scoreLabel.zPosition = 2
+        self.addChild(scoreLabel)
     }
     
     func touchDown(atPoint pos : CGPoint) {
@@ -105,7 +116,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         if contact.bodyA.collisionBitMask == ColliderType.Bird.rawValue || contact.bodyB.collisionBitMask == ColliderType.Bird.rawValue {
-            print("Contact")
+            score += 1
+            scoreLabel.text = "\(score)"
         }
     }
     
