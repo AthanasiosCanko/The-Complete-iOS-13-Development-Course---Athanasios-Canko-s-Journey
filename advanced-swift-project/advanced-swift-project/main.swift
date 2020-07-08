@@ -9,8 +9,23 @@
 import Foundation
 
 let classJames = MusicianClass(nameInput: "James", ageInput: 50, instrumentInput: "Guitar")
+var structJames = MusicianStruct(name: "James", age: 50, instrument: "Guitar")
+
+classJames.age = 51
+structJames.age = 51
+
+let copyOfClassJames = classJames
+var copyOfStructJames = structJames
+
+print(copyOfClassJames.age)
+print(copyOfStructJames.age)
+
+copyOfClassJames.age = 52
+copyOfStructJames.age = 52
+
+print(copyOfClassJames.age)
+print(copyOfStructJames.age)
+
 print(classJames.age)
+print(structJames.age)
 
-let structJames = MusicianStruct(name: "James", age: 50, instrument: "Guitar")
-
-print(structJames.name)
