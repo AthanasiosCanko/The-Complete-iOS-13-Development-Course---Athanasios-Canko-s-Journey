@@ -14,18 +14,25 @@ var structJames = MusicianStruct(name: "James", age: 50, instrument: "Guitar")
 classJames.age = 51
 structJames.age = 51
 
-let copyOfClassJames = classJames
-var copyOfStructJames = structJames
-
-print(copyOfClassJames.age)
-print(copyOfStructJames.age)
-
-copyOfClassJames.age = 52
-copyOfStructJames.age = 52
-
-print(copyOfClassJames.age)
-print(copyOfStructJames.age)
+//let copyOfClassJames = classJames
+//var copyOfStructJames = structJames
+//
+//print(copyOfClassJames.age)
+//print(copyOfStructJames.age)
+//
+//copyOfClassJames.age = 52
+//copyOfStructJames.age = 52
+//
+//print(copyOfClassJames.age)
+//print(copyOfStructJames.age)
+//
+//print(classJames.age)
+//print(structJames.age)
 
 print(classJames.age)
-print(structJames.age)
+classJames.happyBirthday()
+print(classJames.age)
 
+print(structJames.age)
+structJames.happyBirthday()
+print(structJames.age)
