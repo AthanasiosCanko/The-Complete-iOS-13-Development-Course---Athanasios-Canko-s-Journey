@@ -22,8 +22,18 @@ struct FavouriteElements: Identifiable {
     var description: String
 }
 
+// BANDS
 let metallica = FavouriteElements(name: "Metallica", imageName: "metallica", description: "No 1 Music Band")
 let megadeth = FavouriteElements(name: "Megadeth", imageName: "megadeth", description: "No 2 Music Band")
 let ironmaiden = FavouriteElements(name: "Iron Maiden", imageName: "ironmaiden", description: "No 3 Music Band")
 
 let favouriteBands = FavouriteModel(title: "Favourite Bands", elements: [metallica, megadeth, ironmaiden])
+
+// MOVIES
+let pulpfiction = FavouriteElements(name: "Pulp Fiction", imageName: "pulpfiction", description: "No 1 Movie")
+let thedarkknight = FavouriteElements(name: "The Dark Knight", imageName: "thedarkknight", description: "No 2 Movie")
+let killbill = FavouriteElements(name: "Kill Bill", imageName: "killbill", description: "No 3 Movie")
+
+let favouriteMovies = FavouriteModel(title: "Favourite Movies", elements: [pulpfiction, thedarkknight, killbill])
+
+let myFavourites = [favouriteBands, favouriteMovies]
