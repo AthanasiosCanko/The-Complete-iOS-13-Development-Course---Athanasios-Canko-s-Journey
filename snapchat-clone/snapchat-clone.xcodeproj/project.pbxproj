@@ -15,9 +15,9 @@
 		692A1DD424C87E1800B0A8ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 692A1DD224C87E1800B0A8ED /* LaunchScreen.storyboard */; };
 		692A1DDC24C87EAE00B0A8ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 692A1DDB24C87EAE00B0A8ED /* GoogleService-Info.plist */; };
 		692A1DDE24C8835000B0A8ED /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692A1DDD24C8835000B0A8ED /* FeedVC.swift */; };
-		692A1DE024C8836700B0A8ED /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692A1DDF24C8836700B0A8ED /* SettingsVC.swift */; };
-		692A1DE224C8837D00B0A8ED /* UploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692A1DE124C8837C00B0A8ED /* UploadVC.swift */; };
-		692A1DE624C8850400B0A8ED /* SnapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692A1DE524C8850400B0A8ED /* SnapVC.swift */; };
+		692A1DEC24C89C6D00B0A8ED /* SnapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692A1DEB24C89C6D00B0A8ED /* SnapVC.swift */; };
+		692A1DEE24C89F0600B0A8ED /* UploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692A1DED24C89F0600B0A8ED /* UploadVC.swift */; };
+		692A1DF024C8A07900B0A8ED /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692A1DEF24C8A07900B0A8ED /* SettingsVC.swift */; };
 		F4A601D2708F8ABEADDCEC0C /* Pods_snapchat_clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2219DBFFD35AE18797B5E6 /* Pods_snapchat_clone.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,9 +33,9 @@
 		692A1DD524C87E1800B0A8ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		692A1DDB24C87EAE00B0A8ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		692A1DDD24C8835000B0A8ED /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
-		692A1DDF24C8836700B0A8ED /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
-		692A1DE124C8837C00B0A8ED /* UploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UploadVC.swift; path = "/Users/athanasioscanko/iOS/athanasioscanko-ios13-development-journey/snapchat-clone/snapchat-clone/UploadVC.swift"; sourceTree = "<absolute>"; };
-		692A1DE524C8850400B0A8ED /* SnapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapVC.swift; sourceTree = "<group>"; };
+		692A1DEB24C89C6D00B0A8ED /* SnapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapVC.swift; sourceTree = "<group>"; };
+		692A1DED24C89F0600B0A8ED /* UploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadVC.swift; sourceTree = "<group>"; };
+		692A1DEF24C8A07900B0A8ED /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		CD2219DBFFD35AE18797B5E6 /* Pods_snapchat_clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_snapchat_clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D36434E9776332AB6D1B21CA /* Pods-snapchat-clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-snapchat-clone.release.xcconfig"; path = "Target Support Files/Pods-snapchat-clone/Pods-snapchat-clone.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,10 +88,10 @@
 			isa = PBXGroup;
 			children = (
 				692A1DCB24C87E1400B0A8ED /* SignInVC.swift */,
-				692A1DE124C8837C00B0A8ED /* UploadVC.swift */,
 				692A1DDD24C8835000B0A8ED /* FeedVC.swift */,
-				692A1DDF24C8836700B0A8ED /* SettingsVC.swift */,
-				692A1DE524C8850400B0A8ED /* SnapVC.swift */,
+				692A1DEB24C89C6D00B0A8ED /* SnapVC.swift */,
+				692A1DED24C89F0600B0A8ED /* UploadVC.swift */,
+				692A1DEF24C8A07900B0A8ED /* SettingsVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -239,12 +239,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				692A1DDE24C8835000B0A8ED /* FeedVC.swift in Sources */,
-				692A1DE224C8837D00B0A8ED /* UploadVC.swift in Sources */,
 				692A1DCC24C87E1400B0A8ED /* SignInVC.swift in Sources */,
 				692A1DC824C87E1400B0A8ED /* AppDelegate.swift in Sources */,
-				692A1DE624C8850400B0A8ED /* SnapVC.swift in Sources */,
+				692A1DEC24C89C6D00B0A8ED /* SnapVC.swift in Sources */,
 				692A1DCA24C87E1400B0A8ED /* SceneDelegate.swift in Sources */,
-				692A1DE024C8836700B0A8ED /* SettingsVC.swift in Sources */,
+				692A1DEE24C89F0600B0A8ED /* UploadVC.swift in Sources */,
+				692A1DF024C8A07900B0A8ED /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

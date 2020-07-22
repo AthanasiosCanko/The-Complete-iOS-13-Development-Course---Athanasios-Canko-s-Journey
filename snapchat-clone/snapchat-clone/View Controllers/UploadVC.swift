@@ -1,15 +1,17 @@
 //
 //  UploadVC.swift
-//  
+//  snapchat-clone
 //
 //  Created by Athanasios Canko on 22.7.20.
+//  Copyright © 2020 Athanasios Canko. All rights reserved.
 //
 
 import UIKit
 
 class UploadVC: UIViewController {
-
-    @IBOutlet weak var uploadImageView: UIImageView!
+    
+    
+    @IBOutlet weak var imageView: UIImageView!
     @IBAction func uploadClicked(_ sender: Any) {
     }
     
