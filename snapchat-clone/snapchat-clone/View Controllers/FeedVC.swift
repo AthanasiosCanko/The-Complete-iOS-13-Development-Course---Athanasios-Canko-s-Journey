@@ -17,6 +17,7 @@ class FeedVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getUserInfo()
     }
     
     func getUserInfo() {
@@ -27,6 +28,7 @@ class FeedVC: UIViewController {
                         if let username = document.get("username") as? String {
                             UserSingleton.sharedUserInfo.username = username
                             UserSingleton.sharedUserInfo.email = Auth.auth().currentUser!.email!
+                            print("success")
                         }
                     }
                 }
