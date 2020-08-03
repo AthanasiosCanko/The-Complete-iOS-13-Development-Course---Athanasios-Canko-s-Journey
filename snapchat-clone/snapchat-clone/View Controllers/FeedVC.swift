@@ -9,7 +9,17 @@
 import UIKit
 import Firebase
 
-class FeedVC: UIViewController {
+class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! FeedCell
+        cell.feedUsernameLabel.text = "Test"
+        return cell
+    }
+    
 
     let firestoreDatabase = Firestore.firestore()
     
@@ -17,7 +27,26 @@ class FeedVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        getSnapsFromFirebase()
         getUserInfo()
+    }
+    
+    func getSnapsFromFirebase() {
+        firestoreDatabase.collection("Snaps").order(by: "date", descending: true).addSnapshotListener { (snapshot, error) in
+            if error == nil {
+                if snapshot?.isEmpty == false && snapshot != nil {
+                    for document in snapshot!.documents {
+                        
+                    }
+                }
+            }
+            else {
+                self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Error")
+            }
+        }
     }
     
     func getUserInfo() {

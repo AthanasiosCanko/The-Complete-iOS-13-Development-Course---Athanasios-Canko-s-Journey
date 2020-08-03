@@ -172,6 +172,47 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="705" id="Hdd-rX-hm2" customClass="FeedCell" customModule="snapchat_clone" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="705"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hdd-rX-hm2" id="yU4-QG-PlU">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="705"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ujx-4V-6YJ">
+                                                    <rect key="frame" x="20" y="11" width="374" height="70"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="70" id="Yg4-Lc-CzI"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9u9-G3-GrL">
+                                                    <rect key="frame" x="20" y="89" width="374" height="578"/>
+                                                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="581" id="0Ob-Rw-qbF"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Ujx-4V-6YJ" firstAttribute="trailing" secondItem="yU4-QG-PlU" secondAttribute="trailingMargin" id="5Ne-xQ-c27"/>
+                                                <constraint firstItem="Ujx-4V-6YJ" firstAttribute="top" secondItem="yU4-QG-PlU" secondAttribute="topMargin" id="DT9-60-Ufz"/>
+                                                <constraint firstItem="9u9-G3-GrL" firstAttribute="top" secondItem="Ujx-4V-6YJ" secondAttribute="bottom" constant="6.3300000000000001" id="OHN-TM-sDw"/>
+                                                <constraint firstItem="9u9-G3-GrL" firstAttribute="leading" secondItem="yU4-QG-PlU" secondAttribute="leadingMargin" id="RYC-CQ-s7w"/>
+                                                <constraint firstItem="9u9-G3-GrL" firstAttribute="trailing" secondItem="yU4-QG-PlU" secondAttribute="trailingMargin" id="U6y-aU-keC"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="9u9-G3-GrL" secondAttribute="bottom" constant="25.670000000000002" id="dne-fh-Xhm"/>
+                                                <constraint firstItem="Ujx-4V-6YJ" firstAttribute="leading" secondItem="yU4-QG-PlU" secondAttribute="leadingMargin" id="jY9-mn-XJ8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="feedImageView" destination="9u9-G3-GrL" id="H1d-Mt-zJx"/>
+                                            <outlet property="feedUsernameLabel" destination="Ujx-4V-6YJ" id="arG-sf-9wc"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -185,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ybE-Xt-wQb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2144.927536231884" y="-249.10714285714283"/>
+            <point key="canvasLocation" x="2143.4782608695655" y="-249.10714285714283"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="532-jl-Qdt">
