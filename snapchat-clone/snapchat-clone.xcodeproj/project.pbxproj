@@ -19,6 +19,7 @@
 		692A1DEE24C89F0600B0A8ED /* UploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692A1DED24C89F0600B0A8ED /* UploadVC.swift */; };
 		692A1DF024C8A07900B0A8ED /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692A1DEF24C8A07900B0A8ED /* SettingsVC.swift */; };
 		693C52BF24D845A400BB0F8E /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693C52BE24D845A400BB0F8E /* FeedCell.swift */; };
+		693C52C124D848C700BB0F8E /* Snap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693C52C024D848C700BB0F8E /* Snap.swift */; };
 		69A3F11D24C9DBB400AE2F18 /* UserSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A3F11C24C9DBB400AE2F18 /* UserSingleton.swift */; };
 		C32001E9DBACF3BE851D558A /* Pods_snapchat_clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F0C06C96A2FA59431855C3C /* Pods_snapchat_clone.framework */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		692A1DED24C89F0600B0A8ED /* UploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadVC.swift; sourceTree = "<group>"; };
 		692A1DEF24C8A07900B0A8ED /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		693C52BE24D845A400BB0F8E /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		693C52C024D848C700BB0F8E /* Snap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snap.swift; sourceTree = "<group>"; };
 		69A3F11C24C9DBB400AE2F18 /* UserSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSingleton.swift; sourceTree = "<group>"; };
 		8F0C06C96A2FA59431855C3C /* Pods_snapchat_clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_snapchat_clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB2741DF0CD9C8AD3D20ABF4 /* Pods-snapchat-clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-snapchat-clone.debug.xcconfig"; path = "Target Support Files/Pods-snapchat-clone/Pods-snapchat-clone.debug.xcconfig"; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				69A3F11C24C9DBB400AE2F18 /* UserSingleton.swift */,
+				693C52C024D848C700BB0F8E /* Snap.swift */,
 			);
 			name = Model;
 			path = "New Group";
@@ -254,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69A3F11D24C9DBB400AE2F18 /* UserSingleton.swift in Sources */,
+				693C52C124D848C700BB0F8E /* Snap.swift in Sources */,
 				692A1DDE24C8835000B0A8ED /* FeedVC.swift in Sources */,
 				692A1DCC24C87E1400B0A8ED /* SignInVC.swift in Sources */,
 				692A1DC824C87E1400B0A8ED /* AppDelegate.swift in Sources */,
