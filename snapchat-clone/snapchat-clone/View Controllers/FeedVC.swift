@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 
 class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -17,6 +18,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! FeedCell
         cell.feedUsernameLabel.text = snapArray[indexPath.row].username
+        cell.feedImageView.sd_setImage(with: URL(string: snapArray[indexPath.row].imageUrlArray[0]))
         
         return cell
     }
@@ -24,6 +26,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     let firestoreDatabase = Firestore.firestore()
     var snapArray = [Snap]()
+    var chosenSnap: Snap?
+    var timeLeft: Int?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -57,9 +61,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                                 }
                                             }
                                         }
-                                        else {
-                                            
-                                        }
+                                        self.timeLeft = 24 - difference
                                     }
                                     
                                     let snap = Snap(username: username, imageUrlArray: imageUrlArray, date: date.dateValue())
@@ -68,6 +70,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                             }
                         }
                     }
+                    self.tableView.reloadData()
                 }
             }
             else {
