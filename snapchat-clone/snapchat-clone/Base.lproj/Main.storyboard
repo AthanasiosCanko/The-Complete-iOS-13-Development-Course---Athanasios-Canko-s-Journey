@@ -224,7 +224,7 @@
                     <tabBarItem key="tabBarItem" title="Feed" image="f.circle.fill" catalog="system" id="BCD-Le-ZlW"/>
                     <connections>
                         <outlet property="tableView" destination="CGO-ID-Xjh" id="ttx-Jg-5Pe"/>
-                        <segue destination="OH5-Kt-cZP" kind="show" id="1ua-RI-awt"/>
+                        <segue destination="OH5-Kt-cZP" kind="show" identifier="toSnapVC" id="1ua-RI-awt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ybE-Xt-wQb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

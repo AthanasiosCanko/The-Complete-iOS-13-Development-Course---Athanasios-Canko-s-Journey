@@ -30,7 +30,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSnapVC" {
-            
+            let snapVC = segue.destination as! SnapVC
+            snapVC.selectedSnap = chosenSnap!
+            snapVC.selectedTime = timeLeft!
         }
     }
 
