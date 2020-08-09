@@ -23,6 +23,16 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        chosenSnap = snapArray[indexPath.row]
+        performSegue(withIdentifier: "toSnapVC", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSnapVC" {
+            
+        }
+    }
 
     let firestoreDatabase = Firestore.firestore()
     var snapArray = [Snap]()

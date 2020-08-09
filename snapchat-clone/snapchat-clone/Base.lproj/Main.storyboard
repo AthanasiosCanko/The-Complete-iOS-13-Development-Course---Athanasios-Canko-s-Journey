@@ -155,6 +155,9 @@
                         <viewLayoutGuide key="safeArea" id="P0q-DL-AwN"/>
                     </view>
                     <navigationItem key="navigationItem" id="JS5-VW-jYK"/>
+                    <connections>
+                        <outlet property="timeLabel" destination="ycY-bi-h0D" id="Ds3-ef-ipL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hYX-P7-H80" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
