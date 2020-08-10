@@ -32,14 +32,12 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if segue.identifier == "toSnapVC" {
             let snapVC = segue.destination as! SnapVC
             snapVC.selectedSnap = chosenSnap!
-            snapVC.selectedTime = timeLeft!
         }
     }
 
     let firestoreDatabase = Firestore.firestore()
     var snapArray = [Snap]()
     var chosenSnap: Snap?
-    var timeLeft: Int?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -68,16 +66,16 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                         if difference >= 24 {
                                             //
                                             self.firestoreDatabase.collection("Snaps").document(documentId).delete { (error) in
-                                                if error == nil {
+                                                if error != nil {
                                                     self.makeAlert(title: "Error", message: error?.localizedDescription ?? "Error")
                                                 }
                                             }
                                         }
-                                        self.timeLeft = 24 - difference
+                                        else {
+                                            let snap = Snap(username: username, imageUrlArray: imageUrlArray, date: date.dateValue(), timeLeft: 24 - difference)
+                                            self.snapArray.append(snap)
+                                        }
                                     }
-                                    
-                                    let snap = Snap(username: username, imageUrlArray: imageUrlArray, date: date.dateValue())
-                                    self.snapArray.append(snap)
                                 }
                             }
                         }

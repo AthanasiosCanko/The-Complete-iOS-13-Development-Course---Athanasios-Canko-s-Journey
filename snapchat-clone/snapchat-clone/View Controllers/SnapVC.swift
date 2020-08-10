@@ -20,14 +20,12 @@ class SnapVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let time = selectedTime {
-            timeLabel.text = "Time left: \(time)"
-        }
-        
         if let snap = selectedSnap {
             for imageUrl in snap.imageUrlArray {
                 inputArray.append(KingfisherSource(urlString: imageUrl)!)
             }
+            
+            timeLabel.text = "Time left: \(snap.timeLeft)"
             
             let imageSlideshow = ImageSlideshow(frame: CGRect(x: 10, y: 10, width: view.frame.width * 0.95, height: view.frame.height * 0.9))
             imageSlideshow.backgroundColor = UIColor.white
